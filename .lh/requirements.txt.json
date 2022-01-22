@@ -1,0 +1,18 @@
+{
+    "sourceFile": "requirements.txt",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1642890674982,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1642890674982,
+            "name": "Commit-0",
+            "content": "flask\r\n"
+        }
+    ]
+}

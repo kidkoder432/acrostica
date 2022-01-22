@@ -1,0 +1,18 @@
+{
+    "sourceFile": "main.py",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1642890662676,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1642890662676,
+            "name": "Commit-0",
+            "content": "import random, string, pprint\nfrom flask import Flask, render_template, request\n\nletters = 'QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm '\n\napp = Flask(__name__)\npersonWords = str(open('personality.txt').read()).split('\\n')\n\ndef regenWordList():\n    global personWordsByLetter\n    personWordsByLetter = {}\n    for i in string.ascii_lowercase:\n        personWordsByLetter[i] = [x for x in personWords if x.startswith(i)]\n\n@app.route('/')\ndef index():\n    return render_template('index.html')\n\n\n@app.route('/', methods=['GET', 'POST'])\ndef acrostic():\n    regenWordList()\n    poem = []\n    name = request.form['name']\n    if True:\n\n        l = list(name.lower())\n        for i in l:\n            if i not in letters:\n                continue\n            if i == ' ':\n                poem.append('\\n')\n                continue\n            if len(personWordsByLetter[i]) == 0:\n                return render_template('index.html', log='Sorry, but we couldn\\'t generate an acrostic for the name \"' + name + '\" . Please try again.')\n            l = random.choice(personWordsByLetter[i])\n            if l in poem:\n                personWordsByLetter[i].remove(l)\n                if len(personWordsByLetter[i]) <= 0:\n                    pprint.pprint(personWordsByLetter, i)\n                    return render_template('index.html', log='Sorry, but we couldn\\'t generate an acrostic for the name \"' + name + '\" . Please try again.')\n                l = random.choice(personWordsByLetter[i])\n            poem.append(l)\n        newPoem = ''\n        print(poem)\n        for line in poem:\n            if line == '\\n':\n                newPoem += '\\n'\n                continue\n            newPoem += f'{line[0].upper()}{line[1:]}\\n\\n'\n            newPoem = newPoem[:-1]  \n        print(newPoem) \n        return render_template('index.html', poem=newPoem)\n"
+        }
+    ]
+}

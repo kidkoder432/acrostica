@@ -51,5 +51,3 @@ def acrostic():
             newPoem = newPoem[:-1]  
         print(newPoem) 
         return render_template('index.html', poem=newPoem)
-
-app.run('0.0.0.0', 8080)
