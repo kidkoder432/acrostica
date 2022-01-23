@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+	<title>Acrostic Generator</title>
+</head>
+<style>
+	@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+	@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&display=swap');
+
+	button,
+	input {
+		font-family: 'Indie Flower';
+		background-color: white;
+		border-radius: 5px;
+	}
+
+
+
+	body {
+		font-family: "Indie Flower";
+		color: black;
+		background-color: lightblue;
+	}
+
+	.poem {
+		font-family: "Caveat";
+		font-size: 50px;
+
+	}
+
+	b {
+		font-weight: bold;
+		font-size: 60px;
+	}
+</style>
+
+<body>
+	<h1>Acrostic Poem Generator</h1>
+	<h2>Enter the name of a person whom you want to make an acrostic poem for.</h2>
+	<form id='in' method='POST' action='/'>
+		<input name='name' type='text' id='name' placeholder="Name">
+            <button type="submit">Generate Acrostic</button>
+        </form>
+        <br><br>
+        <p id='out'>{{ log }}</p>
+        <div class='poem' id='poem'>
+            {% if poem %}
+                {% for i in poem.split('\n') %}
+                    <b class='bold'>{{ i[0] }}</b>{{ i[1:] }}<br>
+                {% endfor %}
+            {% endif %}
+        </div>
+
+        <footer>
+            <p>By Prajwal Agrawal</p>
+            <a href='https://github.com/kidkoder432'><button>My Github Profile</button></a>
+
+            <a href='mailto:findprajju@gmail.com'><button>Email Me (no spam please)</button></a>
+        </footer>
+    </body>
+    <script>
+        window.onload = function() {
+            document.getElementById("in").reset();
+            document/getElementById('poem').innerHTML = ""
+
+        }
+
+</html>
